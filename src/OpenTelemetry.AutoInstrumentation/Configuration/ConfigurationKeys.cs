@@ -85,6 +85,24 @@ public class ConfigurationKeys
     public const string Http2UnencryptedSupportEnabled = "OTEL_DOTNET_AUTO_HTTP2UNENCRYPTEDSUPPORT_ENABLED";
 
     /// <summary>
+    /// Configuration key for the metrics exporter to be used.
+    /// Default is <c>"otlp"</c>.
+    /// </summary>
+    public const string MetricsExporter = "OTEL_METRICS_EXPORTER";
+
+    /// <summary>
+    /// Configuration key for enabling or disabling the Tracer.
+    /// Default is value is true (enabled).
+    /// </summary>
+    /// <seealso cref="MetricSettings.MetricsEnabled"/>
+    public const string MetricEnabled = "OTEL_DOTNET_AUTO_ENABLED";
+
+    /// <summary>
+    /// Configuration key for whether the tracer should be initialized by the profiler or not.
+    /// </summary>
+    public const string LoadMetricAtStartup = "OTEL_DOTNET_AUTO_LOAD_AT_STARTUP";
+
+    /// <summary>
     /// String format patterns used to match integration-specific configuration keys.
     /// </summary>
     internal static class Integrations
