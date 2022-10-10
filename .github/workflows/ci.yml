@@ -133,7 +133,7 @@ jobs:
           path: nuget/bin-macos-11
           
       - name: Build NuGet package
-        run: nuget pack Tools.InnoSetup.nuspec
+        run: nuget pack OpenTelemetry.AutoInstrumentation.nuspec
         working-directory: nuget
         
       - shell: bash
