@@ -138,15 +138,19 @@ jobs:
         
       - shell: bash
         run: |
-          ls -R > math-homework.txt
-      - name: Upload math result for job 2
+          ls -R > filelist.txt
+      - name: ListFiles
         uses: actions/upload-artifact@v3
         with:
-          name: homework
-          path: math-homework.txt               
+          name: filelist
+          path: filelist.txt
+      - name: Upload Nuget1
+        uses: actions/upload-artifact@v3
+        with:
+          name: OpenTelemetry.AutoInstrumentation1
+          path: nuget/OpenTelemetry.AutoInstrumentation.0.3.1-beta.1.nupkg          
       - name: Upload Nuget
         uses: actions/upload-artifact@v3
         with:
           name: OpenTelemetry.AutoInstrumentation
-          path: OpenTelemetry.AutoInstrumentation.nupkg
-          working-directory: nuget          
+          path: nuget/*.nupkg   
