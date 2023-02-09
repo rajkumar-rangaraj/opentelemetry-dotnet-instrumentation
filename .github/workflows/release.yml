@@ -56,25 +56,44 @@ jobs:
         name: bin-${{ matrix.base-image }}
         path: bin/tracer-home
 
-  create-release:
-    name: Create GH release
+  pack:
+    needs: build
+
     runs-on: ubuntu-20.04
-    needs: [ build, container-build ]
-    permissions:
-      contents: write
-    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3.3.0
-      - uses: actions/download-artifact@v3.0.2
+      - uses: nuget/setup-nuget@v1.1.1
+
+      - name: Download Windows Artifacts from build job
+        uses: actions/download-artifact@v3.0.2
         with:
-          path: .
-      - name: Install zip
-        uses: montudor/action-zip@v1.0.0
-      - run: cd bin-alpine ; zip -qq -r ../opentelemetry-dotnet-instrumentation-linux-musl.zip . * ; cd ..
-      - run: cd bin-ubuntu-20.04 ; zip -qq -r ../opentelemetry-dotnet-instrumentation-linux-glibc.zip . * ; cd ..
-      - run: cd bin-windows-2022 ; zip -qq -r ../opentelemetry-dotnet-instrumentation-windows.zip . * ; cd ..
-      - run: cd bin-macos-11 ; zip -qq -r ../opentelemetry-dotnet-instrumentation-macos.zip . * ; cd ..
-      - name: Create Release
-        run: gh release create ${{ github.ref_name }} --title ${{ github.ref_name }} --verify-tag --draft ./*.zip ./otel-dotnet-auto-install.sh ./OpenTelemetry.DotNet.Auto.psm1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: bin-windows-2022
+          path: nuget/bin-windows
+
+      - name: Download Ubuntu Artifacts from build job
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: bin-ubuntu-20.04
+          path: nuget/bin-linux-glibc
+
+      - name: Download Alpine Artifacts from build job
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: bin-alpine
+          path: nuget/bin-linux-musl
+
+      - name: Download Mac-OS Artifacts from build job
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: bin-macos-11
+          path: nuget/bin-macos
+
+      - name: Build NuGet package
+        run: nuget pack OpenTelemetry.AutoInstrumentation.nuspec -Properties NoWarn=NU5100,NU5123,NU5128
+        working-directory: nuget
+
+      - name: Upload Nuget
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: OpenTelemetry.AutoInstrumentation.Nuget
+          path: nuget/*.nupkg
