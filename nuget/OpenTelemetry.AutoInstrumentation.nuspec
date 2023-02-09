@@ -66,7 +66,7 @@
     <file src="bin-linux-glibc/integrations.json" target="integrations.json" />
     <file src="bin-linux-glibc/LICENSE" target="LICENSE" />
     <file src="bin-linux-glibc/linux-x64/**/*.*" target="linux-x64" />
-    <file src="bin-linux-musl/linux-musl-x64/**/*.*" target="linux-musl-x64" />
+    <file src="bin-linux-musl/linux-x64/**/*.*" target="linux-musl-x64" />
     <file src="bin-windows/netfx/**/*.*" target="netfx" />
     <file src="bin-windows/win-x64/**/*.*" target="win-x64" />
     <file src="bin-windows/win-x86/**/*.*" target="win-x86" />
