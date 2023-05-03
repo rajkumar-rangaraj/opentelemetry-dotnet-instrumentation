@@ -22,7 +22,7 @@ jobs:
           - machine: macos-11
             containers: none
             log-dir: "/var/log/opentelemetry/dotnet"
-        dotnet-version:
+        version:
           - 6.0.408
           - 7.0.203
     runs-on: ${{ matrix.machine }}
