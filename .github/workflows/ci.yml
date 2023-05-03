@@ -22,8 +22,9 @@ jobs:
           - machine: macos-11
             containers: none
             log-dir: "/var/log/opentelemetry/dotnet"
-          - dotnet-version: "6.0.408"
-          - dotnet-version: "7.0.203"
+        dotnet-version:
+          - 6.0.408
+          - 7.0.203
     runs-on: ${{ matrix.machine }}
     steps:
       - uses: actions/checkout@v3.5.2
