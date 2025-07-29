@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net9.0;net8.0</TargetFrameworks>
-    <DefineConstants Condition="'$(LibraryVersion)' == '' or '$(LibraryVersion)'>='7.7.0'">$(DefineConstants);GRAPHQL_7_7_OR_GREATER</DefineConstants>
+    <DefineConstants Condition="'$(LibraryVersion)' == '' or '$(LibraryVersion)'&gt;='7.7.0'">$(DefineConstants);GRAPHQL_7_7_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
