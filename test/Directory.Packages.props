@@ -2,7 +2,7 @@
   <Import Project="..\Directory.Packages.props" />
   <ItemGroup>
     <PackageVersion Include="Azure.Storage.Blobs" Version="12.24.1" />
-    <PackageVersion Include="Confluent.Kafka" Version="2.10.1" />
+    <PackageVersion Include="Confluent.Kafka" Version="2.11.0" />
     <PackageVersion Include="Elastic.Clients.Elasticsearch" Version="9.0.7" />
     <PackageVersion Include="Google.Protobuf" Version="3.31.1" />
     <PackageVersion Include="GraphQL" Version="8.5.0" />
