@@ -37,7 +37,7 @@
     <PackageVersion Include="Npgsql" Version="9.0.3" />
     <PackageVersion Include="NuGet.Versioning" Version="6.14.0" />
     <PackageVersion Include="OpenTracing" Version="0.12.1" />
-    <PackageVersion Include="Oracle.ManagedDataAccess" Version="23.8.0" />
+    <PackageVersion Include="Oracle.ManagedDataAccess" Version="23.9.1" />
     <PackageVersion Include="Oracle.ManagedDataAccess.Core" Version="23.8.0" />
     <PackageVersion Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
     <PackageVersion Include="Quartz" Version="3.14.0" />
